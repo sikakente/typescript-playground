@@ -11,7 +11,7 @@ export class FlightFareSearchService {
   async getFlights(params: SearchFlights) {
     return lastValueFrom(
       this.http
-        .get(`${FFS_BASE_URL}/flight`, {
+        .get(`${FFS_BASE_URL}/flight/`, {
           headers: {
             'X-RapidAPI-Key': process.env.RAPID_API_KEY,
             'X-RapidAPI-Host': FFS_RAPID_API_HOST,
@@ -20,7 +20,10 @@ export class FlightFareSearchService {
         })
         .pipe(
           map((res) => res.data?.results),
-          map((result) => result.flight_name),
+          // map((results) => {
+          //   return results.map((result) => result.flight_name);
+          // }),
+          // distinct(),
         )
         .pipe(
           catchError(() => {
@@ -30,5 +33,12 @@ export class FlightFareSearchService {
           }),
         ),
     );
+  }
+
+  async getFlightNames(params: SearchFlights) {
+    const flights = await this.getFlights(params);
+    console.log(flights);
+
+    return flights.map((flight) => flight.flight_name);
   }
 }

@@ -1,4 +1,4 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Controller, Get, Query } from '@nestjs/common';
 import { SearchFlights } from '@root/flight-fare-search/dto/search-flights';
 import { FlightsService } from './flights.service';
 
@@ -16,9 +16,8 @@ export class FlightsController {
   }
 
   @Get()
-  async getFlights(@Param() searchFlights: SearchFlights) {
+  async getFlights(@Query() searchFlights: SearchFlights) {
     const flights = await this.flightsService.getFlights(searchFlights);
-
     return {
       data: flights,
     };

@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { SearchFlights } from '@root/flight-fare-search/dto/search-flights';
-import { FlightFareSearchService } from '@root/flight-fare-search/flight-fare-search.service';
-import { SkyscannerService } from '@root/skyscanner/skyscanner.service';
+import { SearchFlights } from '../flight-fare-search/dto/search-flights';
+import { FlightFareSearchService } from '../flight-fare-search/flight-fare-search.service';
+import { SkyscannerService } from '../skyscanner/skyscanner.service';
 
 @Injectable()
 export class FlightsService {
