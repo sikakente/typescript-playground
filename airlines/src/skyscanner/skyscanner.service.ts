@@ -1,6 +1,6 @@
 import { HttpService } from '@nestjs/axios';
 import { ForbiddenException, Injectable } from '@nestjs/common';
-import { catchError, lastValueFrom, map } from 'rxjs';
+import { catchError, lastValueFrom, map, tap } from 'rxjs';
 import { SKYSCANNER_BASE_URL, SKYSCANNER_RAPID_API_HOST } from './constants';
 
 @Injectable()
@@ -16,7 +16,10 @@ export class SkyscannerService {
             'X-RapidAPI-Host': SKYSCANNER_RAPID_API_HOST,
           },
         })
-        .pipe(map((res) => res.data?.carriers))
+        .pipe(
+          tap((res) => console.log(res)),
+          map((res) => res.data?.carriers),
+        )
         .pipe(
           catchError(() => {
             throw new ForbiddenException(`Skyscanner API is not available`);

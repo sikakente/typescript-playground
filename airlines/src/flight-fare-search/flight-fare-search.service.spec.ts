@@ -10,7 +10,7 @@ import { format } from 'date-fns';
 import { of } from 'rxjs';
 import flights from './__test__/search/flights.json';
 import { FlightFareSearchService } from './flight-fare-search.service';
-import { FlightResponse } from './interfaces/flights';
+import { FlightResponse } from './interfaces/flights-response';
 
 describe('FlightFareSearchService', () => {
   let flightFareService: FlightFareSearchService;

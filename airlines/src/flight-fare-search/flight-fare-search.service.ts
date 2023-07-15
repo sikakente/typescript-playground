@@ -3,7 +3,7 @@ import { ForbiddenException, Injectable } from '@nestjs/common';
 import { catchError, lastValueFrom, map } from 'rxjs';
 import { FFS_BASE_URL, FFS_RAPID_API_HOST } from './constants';
 import { SearchFlights } from './dto/search-flights';
-import { FlightResults } from './interfaces/flights';
+import { FlightResults } from './interfaces/flights-response';
 
 @Injectable()
 export class FlightFareSearchService {
