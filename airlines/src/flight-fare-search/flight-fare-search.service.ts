@@ -3,12 +3,13 @@ import { ForbiddenException, Injectable } from '@nestjs/common';
 import { catchError, lastValueFrom, map } from 'rxjs';
 import { FFS_BASE_URL, FFS_RAPID_API_HOST } from './constants';
 import { SearchFlights } from './dto/search-flights';
+import { FlightResults } from './interfaces/flights';
 
 @Injectable()
 export class FlightFareSearchService {
   constructor(private http: HttpService) {}
 
-  async getFlights(params: SearchFlights) {
+  async getFlights(params: SearchFlights): Promise<FlightResults> {
     return lastValueFrom(
       this.http
         .get(`${FFS_BASE_URL}/flight/`, {
@@ -33,12 +34,5 @@ export class FlightFareSearchService {
           }),
         ),
     );
-  }
-
-  async getFlightNames(params: SearchFlights) {
-    const flights = await this.getFlights(params);
-    console.log(flights);
-
-    return flights.map((flight) => flight.flight_name);
   }
 }

@@ -10,6 +10,7 @@ import { format } from 'date-fns';
 import { of } from 'rxjs';
 import flights from './__test__/search/flights.json';
 import { FlightFareSearchService } from './flight-fare-search.service';
+import { FlightResponse } from './interfaces/flights';
 
 describe('FlightFareSearchService', () => {
   let flightFareService: FlightFareSearchService;
@@ -28,19 +29,20 @@ describe('FlightFareSearchService', () => {
     httpService = module.get<HttpService>(HttpService);
   });
 
-  describe('getFlightNames', () => {
+  describe('getFlights', () => {
     it('should return a list of flights', async () => {
       const headers = AxiosHeaders.from({
         'Content-Type': 'application/json',
       }) as AxiosRequestHeaders;
 
-      const searchResult: AxiosResponse<any, RawAxiosRequestConfig> = {
-        data: flights,
-        status: 200,
-        statusText: 'OK',
-        headers: {},
-        config: { headers: headers },
-      };
+      const searchResult: AxiosResponse<FlightResponse, RawAxiosRequestConfig> =
+        {
+          data: flights,
+          status: 200,
+          statusText: 'OK',
+          headers: {},
+          config: { headers: headers },
+        };
 
       jest
         .spyOn(httpService, 'get')
