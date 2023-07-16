@@ -1,0 +1,45 @@
+version: '3.8'
+services:
+  dev-db:
+    image: postgres:latest
+    container_name: airlines-dev-postgres-db
+    ports:
+      - 5437:5432
+    volumes:
+      - airlines_postgres_data:/var/lib/postgresql/data/
+    environment:
+      POSTGRES_USER: airlines
+      POSTGRES_PASSWORD: example
+      POSTGRES_DB: airlines
+      POSTGRES_PORT: 5432
+    networks:
+      - airlines
+  test-db:
+    image: postgres:latest
+    container_name: airlines-test-postgres-db
+    ports:
+      - 5438:5432
+    environment:
+      POSTGRES_USER: airlines
+      POSTGRES_PASSWORD: example
+      POSTGRES_DB: airlines
+      POSTGRES_PORT: 5432
+    networks:
+      - airlines
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: airlines-dev-pgadmin
+    depends_on:
+      - dev-db
+    ports:
+      - '5057:80'
+    environment:
+      PGADMIN_DEFAULT_EMAIL: pgadmin4@pgadmin.org
+      PGADMIN_DEFAULT_PASSWORD: root
+    restart: always
+    networks:
+      - airlines
+networks:
+  airlines:
+volumes:
+  airlines_postgres_data:
