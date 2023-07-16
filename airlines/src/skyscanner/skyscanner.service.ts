@@ -3,6 +3,7 @@ import { ForbiddenException, Injectable } from '@nestjs/common';
 import { catchError, lastValueFrom, map } from 'rxjs';
 import { SKYSCANNER_BASE_URL, SKYSCANNER_RAPID_API_HOST } from './constants';
 import { CarrierDTO } from './dto/carriers-response';
+import { SearchCarrierDTO } from './dto/search-carrier-dto';
 
 @Injectable()
 export class SkyscannerService {
@@ -29,9 +30,17 @@ export class SkyscannerService {
     );
   }
 
-  async getCarrierNames() {
+  async getCarrierNames(searchString: SearchCarrierDTO = '') {
     const carriers = await this.getCarriers();
 
-    return carriers.map((carrier) => carrier.name);
+    return carriers
+      .map((carrier) => carrier.name)
+      .filter((carrier) => carrier.startsWith(searchString));
+  }
+
+  async getCarrierIATAs() {
+    const carriers = await this.getCarriers();
+
+    return carriers.map((carrier) => carrier.iata).filter((carrier) => carrier);
   }
 }
