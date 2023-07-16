@@ -8,7 +8,7 @@ import {
 } from 'axios';
 import { of } from 'rxjs';
 import carriers from './__test__/carriers/carriers.json';
-import { CarrierResponse } from './interfaces/carriers-response';
+import { CarrierDTO, CarrierResponse } from './dto/carriers-response';
 import { SkyscannerService } from './skyscanner.service';
 
 describe('SkyscannerService', () => {
@@ -46,12 +46,33 @@ describe('SkyscannerService', () => {
         statusText: 'OK',
       };
 
+      const expected = Object.values<CarrierDTO>(carriers.carriers);
+
       jest
         .spyOn(httpService, 'get')
         .mockImplementationOnce(() => of(skyScannerResponse));
 
       service.getCarriers().then((res) => {
-        return expect(res).toBe(carriers.carriers);
+        return expect(res).toStrictEqual(expected);
+      });
+    });
+  });
+
+  describe('getCarrierNames', () => {
+    it('should get all carrierNames', () => {
+      const response = Object.values<CarrierDTO>(carriers.carriers).map(
+        (carrier) => carrier.name,
+      );
+      jest
+        .spyOn(service, 'getCarriers')
+        .mockReturnValue(
+          new Promise((resolve, reject) =>
+            resolve(Object.values(carriers.carriers)),
+          ),
+        );
+
+      service.getCarrierNames().then((res) => {
+        return expect(res).toStrictEqual(response);
       });
     });
   });

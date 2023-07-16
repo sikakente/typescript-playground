@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { SearchFlights } from '../flight-fare-search/dto/search-flights';
+import { SearchFlightsDTO } from '../flight-fare-search/dto/search-flights';
 import { FlightFareSearchService } from '../flight-fare-search/flight-fare-search.service';
 import { SkyscannerService } from '../skyscanner/skyscanner.service';
 
@@ -14,7 +14,7 @@ export class FlightsService {
     return this.skyscanner.getCarriers();
   }
 
-  getFlights(params: SearchFlights) {
+  getFlights(params: SearchFlightsDTO) {
     return this.ffs.getFlights(params);
   }
 }

@@ -3,7 +3,7 @@ GET http://localhost:9090/api/flights/carriers
 GET http://localhost:9090/api/flights
       ?from=LHR
       &to=DXB
-      &date=2023-07-15
+      # &date=2023-07-15
       &adult=1
       &type=economy
       &currency=USD

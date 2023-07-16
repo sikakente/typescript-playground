@@ -58,8 +58,8 @@ describe('FlightFareSearchService', () => {
     it('should return a list of flights names', async () => {
       jest
         .spyOn(flightFareService, 'getFlights')
-        .mockImplementationOnce(
-          () => new Promise((resolve, reject) => resolve(flights.results)),
+        .mockReturnValue(
+          new Promise((resolve, reject) => resolve(flights.results)),
         );
 
       const flightNames = flights.results.map((flight) => flight.flight_name);

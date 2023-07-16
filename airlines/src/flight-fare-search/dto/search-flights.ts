@@ -1,6 +1,6 @@
 import { IsCurrency, IsDate } from 'class-validator';
 
-export class SearchFlights {
+export class SearchFlightsDTO {
   from?: string;
   to?: string;
 

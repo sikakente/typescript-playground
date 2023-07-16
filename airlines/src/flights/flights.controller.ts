@@ -1,5 +1,5 @@
 import { Controller, Get, Query } from '@nestjs/common';
-import { SearchFlights } from '../flight-fare-search/dto/search-flights';
+import { SearchFlightsDTO } from '../flight-fare-search/dto/search-flights';
 import { FlightsService } from './flights.service';
 
 @Controller('flights')
@@ -16,7 +16,7 @@ export class FlightsController {
   }
 
   @Get()
-  async getFlights(@Query() searchFlights: SearchFlights) {
+  async getFlights(@Query() searchFlights: SearchFlightsDTO) {
     const flights = await this.flightsService.getFlights(searchFlights);
     return {
       data: flights,

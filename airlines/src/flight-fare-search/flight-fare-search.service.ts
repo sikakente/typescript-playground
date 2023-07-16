@@ -2,14 +2,14 @@ import { HttpService } from '@nestjs/axios';
 import { ForbiddenException, Injectable } from '@nestjs/common';
 import { catchError, lastValueFrom, map } from 'rxjs';
 import { FFS_BASE_URL, FFS_RAPID_API_HOST } from './constants';
-import { SearchFlights } from './dto/search-flights';
+import { SearchFlightsDTO } from './dto/search-flights';
 import { FlightResults } from './interfaces/flights-response';
 
 @Injectable()
 export class FlightFareSearchService {
   constructor(private http: HttpService) {}
 
-  async getFlights(params: SearchFlights): Promise<FlightResults> {
+  async getFlights(params: SearchFlightsDTO): Promise<FlightResults> {
     return lastValueFrom(
       this.http
         .get(`${FFS_BASE_URL}/flight/`, {
@@ -36,7 +36,7 @@ export class FlightFareSearchService {
     );
   }
 
-  async getFlightNames(params: SearchFlights): Promise<string[]> {
+  async getFlightNames(params: SearchFlightsDTO): Promise<string[]> {
     const flights = await this.getFlights(params);
 
     return flights.map((flight) => flight.flight_name);
