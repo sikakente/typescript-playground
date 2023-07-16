@@ -64,9 +64,32 @@ describe('DuffelService', () => {
         ),
       );
 
-      service
-        .getFlightsFromAllSources(searchBody)
-        .then((res) => expect(res.data.length).toBe(2));
+      service.getFlightsFromAllSources(searchBody).then((res) =>
+        expect(res).toStrictEqual({
+          data: [
+            {
+              arrival: '2019-10-22T02:00:00Z',
+              departure: '2019-10-21T20:00:00Z',
+              destination: 'JFK',
+              flightNumber: 'B1',
+              id: 'b-4d386e9f-0ec1-4839-aac2-59e6983f594a',
+              origin: 'LHR',
+              totalAmount: 304.27,
+              totalCurrency: 'GBP',
+            },
+            {
+              arrival: '2019-10-22T01:00:00Z',
+              departure: '2019-10-21T19:00:00Z',
+              destination: 'JFK',
+              flightNumber: 'B2',
+              id: 'b-9f0b6369-f82e-4a5c-aeba-b3b977871a35',
+              origin: 'LHR',
+              totalAmount: 272.06,
+              totalCurrency: 'GBP',
+            },
+          ],
+        }),
+      );
     });
   });
 });
