@@ -1,0 +1,54 @@
+{
+  "flights": [
+    {
+      "arrival": "2019-10-22T02:00:00Z",
+      "currency": "GBP",
+      "departure": "2019-10-21T20:00:00Z",
+      "dest": "JFK",
+      "flight_number": "B1",
+      "id": "b-4d386e9f-0ec1-4839-aac2-59e6983f594a",
+      "origin": "LHR",
+      "price": { "amount": 304.27 }
+    },
+    {
+      "arrival": "2019-10-22T01:00:00Z",
+      "currency": "GBP",
+      "departure": "2019-10-21T19:00:00Z",
+      "dest": "JFK",
+      "flight_number": "B2",
+      "id": "b-9f0b6369-f82e-4a5c-aeba-b3b977871a35",
+      "origin": "LHR",
+      "price": { "amount": 272.06 }
+    },
+    {
+      "arrival": "2019-10-21T17:00:00Z",
+      "currency": "GBP",
+      "departure": "2019-10-21T11:00:00Z",
+      "dest": "JFK",
+      "flight_number": "B3",
+      "id": "b-d8e79e3f-6d91-4a8c-a4fc-04dd56c21849",
+      "origin": "LHR",
+      "price": { "amount": 349.64 }
+    },
+    {
+      "arrival": "2019-10-22T04:00:00Z",
+      "currency": "GBP",
+      "departure": "2019-10-21T22:00:00Z",
+      "dest": "JFK",
+      "flight_number": "B4",
+      "id": "b-e4bc2760-4eed-4fb2-9072-4f2b619e4671",
+      "origin": "LHR",
+      "price": { "amount": 401.2 }
+    },
+    {
+      "arrival": "2019-10-21T12:00:00Z",
+      "currency": "GBP",
+      "departure": "2019-10-21T06:00:00Z",
+      "dest": "JFK",
+      "flight_number": "B5",
+      "id": "b-f7d5d045-48e3-47e6-a9aa-20272a4e2cc6",
+      "origin": "LHR",
+      "price": { "amount": 458.25 }
+    }
+  ]
+}

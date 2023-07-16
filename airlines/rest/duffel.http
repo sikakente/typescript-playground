@@ -1,0 +1,23 @@
+POST https://interview.duffel.com/airline_a
+Content-Type: application/json
+{
+  "origin": "LHR",
+  "destination": "JFK", 
+  "departure_date": "2019-10-21"
+}
+
+POST https://interview.duffel.com/airline_b
+Content-Type: application/json
+{
+  "origin": "LHR",
+  "destination": "JFK", 
+  "departure_date": "2019-10-21"
+}
+
+POST http://localhost:9090/api/duffel
+Content-Type: application/json
+{
+  "origin": "LHR",
+  "destination": "JFK", 
+  "departure_date": "2019-10-21"
+}
