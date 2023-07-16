@@ -35,8 +35,6 @@ describe('SkyscannerService', () => {
         'Content-Type': 'application/json',
       }) as AxiosRequestHeaders;
 
-      console.log(carriers);
-
       const skyScannerResponse: AxiosResponse<
         CarrierResponse,
         RawAxiosRequestConfig
@@ -52,7 +50,9 @@ describe('SkyscannerService', () => {
         .spyOn(httpService, 'get')
         .mockImplementationOnce(() => of(skyScannerResponse));
 
-      service.getCarriers().then((res) => expect(res).toBe(carriers.carriers));
+      service.getCarriers().then((res) => {
+        return expect(res).toBe(carriers.carriers);
+      });
     });
   });
 });

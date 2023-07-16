@@ -50,7 +50,7 @@ describe('FlightFareSearchService', () => {
 
       flightFareService
         .getFlights({ date: searchDate })
-        .then((res) => expect(res).toBe(flights));
+        .then((res) => expect(res).toBe(flights.results));
     });
   });
 });
