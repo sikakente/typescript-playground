@@ -35,4 +35,10 @@ export class FlightFareSearchService {
         ),
     );
   }
+
+  async getFlightNames(params: SearchFlights): Promise<string[]> {
+    const flights = await this.getFlights(params);
+
+    return flights.map((flight) => flight.flight_name);
+  }
 }

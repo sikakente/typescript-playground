@@ -1,5 +1,5 @@
 import { Controller, Get, Query } from '@nestjs/common';
-import { SearchFlights } from '@root/flight-fare-search/dto/search-flights';
+import { SearchFlights } from '../flight-fare-search/dto/search-flights';
 import { FlightsService } from './flights.service';
 
 @Controller('flights')
